@@ -1,0 +1,4 @@
+../Core/Src/clock.c:25:6:ChangeValue	16	static
+../Core/Src/clock.c:73:6:ApplyChange	8	static
+../Core/Src/clock.c:83:6:ChangeAlarm	4	static
+../Core/Src/clock.c:99:6:fsm	88	static
