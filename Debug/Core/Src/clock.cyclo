@@ -1,4 +1,5 @@
-../Core/Src/clock.c:25:6:ChangeValue	22
-../Core/Src/clock.c:73:6:ApplyChange	1
-../Core/Src/clock.c:83:6:ChangeAlarm	5
-../Core/Src/clock.c:99:6:fsm	23
+../Core/Src/clock.c:24:6:CalibrateInit	1
+../Core/Src/clock.c:34:6:ChangeValue	22
+../Core/Src/clock.c:82:6:ApplyChange	1
+../Core/Src/clock.c:92:6:ChangeAlarm	8
+../Core/Src/clock.c:111:6:fsm	23

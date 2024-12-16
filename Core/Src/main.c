@@ -126,13 +126,16 @@ int main(void)
 	  if(status==2){
 		  Flashing_alarm(sta);
 	  }
-	  if(button_count[0]){
+	  if(button_count[0]==1){
 		  status++;
 		  if(status >2) status =0;
 		  if(status != 0){
+			  if (status ==1) CalibrateInit();
+			  counter=0;
 			  setTimer4(250);
 			  sta=1;
 		  }
+		  lcd_Clear(BLACK);
 	  }
 	  if(flag_timer4){
 		  setTimer4(250);
@@ -261,36 +264,36 @@ void displayTime(){
 }
 void Flashing_cal(int sta){
 	lcd_Fill(0, 50, 200, 160, BLACK);
-	switch (sta) {
+	switch (counter) {
 	case 0:
-		lcd_ShowIntNum(70, 100, cal_hour, 2, GREEN, BLACK, 24);
-		lcd_ShowIntNum(110, 100, cal_min, 2, GREEN, BLACK, 24);
+		lcd_ShowIntNum(70, 100, ds3231_hours, 2, GREEN, BLACK, 24);
+		lcd_ShowIntNum(110, 100, ds3231_min, 2, GREEN, BLACK, 24);
 		if (sta)
 			lcd_ShowIntNum(150, 100, cal_sec, 2, GREEN, BLACK, 24);
-		lcd_ShowIntNum(20, 130, cal_day, 2, YELLOW, BLACK, 24);
-		lcd_ShowIntNum(70, 130, cal_date, 2, YELLOW, BLACK, 24);
-		lcd_ShowIntNum(110, 130, cal_month, 2, YELLOW, BLACK, 24);
-		lcd_ShowIntNum(150, 130, cal_year, 2, YELLOW, BLACK, 24);
+		lcd_ShowIntNum(20, 130, ds3231_day, 2, YELLOW, BLACK, 24);
+		lcd_ShowIntNum(70, 130, ds3231_date, 2, YELLOW, BLACK, 24);
+		lcd_ShowIntNum(110, 130, ds3231_month, 2, YELLOW, BLACK, 24);
+		lcd_ShowIntNum(150, 130, ds3231_year, 2, YELLOW, BLACK, 24);
 		break;
 	case 1:
-		lcd_ShowIntNum(70, 100, cal_hour, 2, GREEN, BLACK, 24);
+		lcd_ShowIntNum(70, 100, ds3231_hours, 2, GREEN, BLACK, 24);
 		if (sta)
 			lcd_ShowIntNum(110, 100, cal_min, 2, GREEN, BLACK, 24);
 		lcd_ShowIntNum(150, 100, cal_sec, 2, GREEN, BLACK, 24);
-		lcd_ShowIntNum(20, 130, cal_day, 2, YELLOW, BLACK, 24);
-		lcd_ShowIntNum(70, 130, cal_date, 2, YELLOW, BLACK, 24);
-		lcd_ShowIntNum(110, 130, cal_month, 2, YELLOW, BLACK, 24);
-		lcd_ShowIntNum(150, 130, cal_year, 2, YELLOW, BLACK, 24);
+		lcd_ShowIntNum(20, 130, ds3231_day, 2, YELLOW, BLACK, 24);
+		lcd_ShowIntNum(70, 130, ds3231_date, 2, YELLOW, BLACK, 24);
+		lcd_ShowIntNum(110, 130, ds3231_month, 2, YELLOW, BLACK, 24);
+		lcd_ShowIntNum(150, 130, ds3231_year, 2, YELLOW, BLACK, 24);
 		break;
 	case 2:
 		if (sta)
 			lcd_ShowIntNum(70, 100, cal_hour, 2, GREEN, BLACK, 24);
 		lcd_ShowIntNum(110, 100, cal_min, 2, GREEN, BLACK, 24);
 		lcd_ShowIntNum(150, 100, cal_sec, 2, GREEN, BLACK, 24);
-		lcd_ShowIntNum(20, 130, cal_day, 2, YELLOW, BLACK, 24);
-		lcd_ShowIntNum(70, 130, cal_date, 2, YELLOW, BLACK, 24);
-		lcd_ShowIntNum(110, 130, cal_month, 2, YELLOW, BLACK, 24);
-		lcd_ShowIntNum(150, 130, cal_year, 2, YELLOW, BLACK, 24);
+		lcd_ShowIntNum(20, 130, ds3231_day, 2, YELLOW, BLACK, 24);
+		lcd_ShowIntNum(70, 130, ds3231_date, 2, YELLOW, BLACK, 24);
+		lcd_ShowIntNum(110, 130, ds3231_month, 2, YELLOW, BLACK, 24);
+		lcd_ShowIntNum(150, 130, ds3231_year, 2, YELLOW, BLACK, 24);
 		break;
 	case 3:
 		lcd_ShowIntNum(70, 100, cal_hour, 2, GREEN, BLACK, 24);
@@ -300,8 +303,8 @@ void Flashing_cal(int sta){
 			lcd_ShowIntNum(20, 130, cal_day, 2, YELLOW, BLACK, 24);
 			lcd_ShowIntNum(70, 130, cal_date, 2, YELLOW, BLACK, 24);
 		}
-		lcd_ShowIntNum(110, 130, cal_month, 2, YELLOW, BLACK, 24);
-		lcd_ShowIntNum(150, 130, cal_year, 2, YELLOW, BLACK, 24);
+		lcd_ShowIntNum(110, 130, ds3231_month, 2, YELLOW, BLACK, 24);
+		lcd_ShowIntNum(150, 130, ds3231_year, 2, YELLOW, BLACK, 24);
 		break;
 	case 4:
 		lcd_ShowIntNum(70, 100, cal_hour, 2, GREEN, BLACK, 24);
@@ -311,7 +314,7 @@ void Flashing_cal(int sta){
 		lcd_ShowIntNum(70, 130, cal_date, 2, YELLOW, BLACK, 24);
 		if (sta)
 			lcd_ShowIntNum(110, 130, cal_month, 2, YELLOW, BLACK, 24);
-		lcd_ShowIntNum(150, 130, cal_year, 2, YELLOW, BLACK, 24);
+		lcd_ShowIntNum(150, 130, ds3231_year, 2, YELLOW, BLACK, 24);
 		break;
 	case 5:
 		lcd_ShowIntNum(70, 100, cal_hour, 2, GREEN, BLACK, 24);
@@ -329,7 +332,7 @@ void Flashing_cal(int sta){
 }
 void Flashing_alarm(int sta){
 	lcd_Fill(0, 50, 200, 160, BLACK);
-	switch (sta) {
+	switch (counter) {
 	case 0:
 		lcd_ShowIntNum(70, 100, al_hours, 2, GREEN, BLACK, 24);
 		lcd_ShowIntNum(110, 100, al_min, 2, GREEN, BLACK, 24);

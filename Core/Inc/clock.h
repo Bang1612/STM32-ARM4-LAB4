@@ -31,4 +31,5 @@ extern uint8_t al_min;
 extern uint8_t al_sec;
 
 void fsm(uint16_t status);
+void CalibrateInit();
 #endif /* INC_CLOCK_H_ */
